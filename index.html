@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaringan Komputer | M RAFAN AFDAL</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root{
+    --bg:#050914;
+    --bg2:#0a1020;
+    --card:rgba(255,255,255,.07);
+    --card2:rgba(255,255,255,.10);
+    --border:rgba(255,255,255,.13);
+    --text:#f5f7ff;
+    --muted:#aab4ca;
+    --blue:#4facfe;
+    --cyan:#00e5ff;
+    --purple:#9b6cff;
+    --green:#4ade80;
+    --shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 10% 10%,rgba(0,229,255,.12),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(155,108,255,.15),transparent 30%),
+        linear-gradient(135deg,var(--bg),var(--bg2));
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    left:-150px;
+    bottom:-150px;
+    background:rgba(79,172,254,.12);
+    filter:blur(100px);
+    border-radius:50%;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    right:-150px;
+    top:200px;
+    background:rgba(155,108,255,.12);
+    filter:blur(100px);
+    border-radius:50%;
+    z-index:-1;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1100px,92%);
+    z-index:1000;
+    padding:12px 18px;
+    border:1px solid var(--border);
+    background:rgba(8,14,29,.72);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-radius:20px;
+    box-shadow:var(--shadow);
+}
+
+.nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Space Grotesk';
+    font-weight:700;
+}
+
+.logo-icon{
+    width:40px;
+    height:40px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--cyan),var(--purple));
+    color:white;
+    font-size:20px;
+    box-shadow:0 0 25px rgba(0,229,255,.25);
+}
+
+.nav-links{
+    display:flex;
+    gap:6px;
+}
+
+.nav-links a{
+    padding:9px 13px;
+    color:#bac4d8;
+    font-size:13px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+    background:rgba(255,255,255,.08);
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:140px 0 80px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:60px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 13px;
+    border:1px solid rgba(0,229,255,.22);
+    background:rgba(0,229,255,.07);
+    color:#9eeeff;
+    border-radius:100px;
+    font-size:12px;
+    font-weight:600;
+    margin-bottom:22px;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+    background:var(--cyan);
+    border-radius:50%;
+    box-shadow:0 0 12px var(--cyan);
+}
+
+.hero h1{
+    font-family:'Space Grotesk';
+    font-size:clamp(42px,6vw,76px);
+    line-height:.98;
+    letter-spacing:-3px;
+    margin-bottom:25px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#fff,var(--cyan),#b18cff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    max-width:650px;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:30px;
+}
+
+.btn{
+    padding:13px 19px;
+    border-radius:13px;
+    border:1px solid var(--border);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
+    font-size:13px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,var(--blue),var(--purple));
+    border:none;
+    box-shadow:0 12px 35px rgba(79,172,254,.22);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.05);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+/* HERO CARD */
+.network-card{
+    position:relative;
+    min-height:400px;
+    border:1px solid var(--border);
+    background:linear-gradient(145deg,rgba(255,255,255,.11),rgba(255,255,255,.035));
+    backdrop-filter:blur(25px);
+    border-radius:30px;
+    padding:25px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+.network-card::before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:rgba(0,229,255,.13);
+    filter:blur(55px);
+    top:-100px;
+    right:-80px;
+}
+
+.network-title{
+    position:relative;
+    color:#b9c6dc;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.network{
+    position:relative;
+    height:290px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.laptop{
+    width:115px;
+    text-align:center;
+}
+
+.screen{
+    height:75px;
+    border:5px solid #667188;
+    border-bottom-width:8px;
+    border-radius:10px 10px 5px 5px;
+    background:linear-gradient(135deg,#172a49,#07111f);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--cyan);
+    font-size:26px;
+}
+
+.base{
+    height:10px;
+    width:135px;
+    background:#667188;
+    border-radius:0 0 20px 20px;
+    margin:auto;
+}
+
+.laptop small{
+    display:block;
+    margin-top:12px;
+    color:#cbd5e1;
+}
+
+.cable{
+    height:3px;
+    width:120px;
+    background:linear-gradient(90deg,var(--cyan),var(--purple));
+    box-shadow:0 0 15px var(--cyan);
+    position:relative;
+}
+
+.cable::after{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:var(--cyan);
+    border-radius:50%;
+    top:-4px;
+    animation:move 2s infinite linear;
+}
+
+@keyframes move{
+    from{left:0}
+    to{left:110px}
+}
+
+/* SECTION */
+section{
+    padding:90px 0;
+}
+
+.section-head{
+    max-width:700px;
+    margin-bottom:40px;
+}
+
+.kicker{
+    color:var(--cyan);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.section-head h2{
+    font-family:'Space Grotesk';
+    font-size:clamp(30px,4vw,48px);
+    margin-bottom:14px;
+}
+
+.section-head p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* CARDS */
+.grid-4{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:23px;
+    backdrop-filter:blur(15px);
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    background:var(--card2);
+    border-color:rgba(0,229,255,.25);
+}
+
+.tool-icon{
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    font-size:24px;
+    background:rgba(0,229,255,.09);
+    margin-bottom:18px;
+}
+
+.card h3{
+    margin-bottom:9px;
+    font-size:17px;
+}
+
+.card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* COLORS */
+.color-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.color-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    overflow:hidden;
+}
+
+.color-head{
+    padding:20px 22px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+}
+
+.color-list{
+    padding:18px;
+}
+
+.color-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 5px;
+    border-bottom:1px solid rgba(255,255,255,.05);
+    font-size:13px;
+}
+
+.color-item:last-child{
+    border:none;
+}
+
+.color-box{
+    width:28px;
+    height:20px;
+    border-radius:5px;
+    border:1px solid rgba(255,255,255,.2);
+}
+
+/* STEPS */
+.steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.step{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:24px;
+    border-radius:20px;
+}
+
+.step-number{
+    font-family:'Space Grotesk';
+    font-size:38px;
+    font-weight:700;
+    color:rgba(255,255,255,.12);
+    margin-bottom:12px;
+}
+
+.step h3{
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.step p{
+    color:var(--muted);
+    line-height:1.65;
+    font-size:13px;
+}
+
+/* CONNECTION */
+.connection{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.ip-card{
+    background:linear-gradient(145deg,rgba(79,172,254,.09),rgba(155,108,255,.08));
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:28px;
+}
+
+.ip-card h3{
+    margin-bottom:20px;
+}
+
+.ip{
+    display:flex;
+    justify-content:space-between;
+    padding:13px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    color:var(--muted);
+}
+
+.ip strong{
+    color:white;
+}
+
+.command{
+    margin-top:20px;
+    background:#02050c;
+    border:1px solid rgba(0,229,255,.15);
+    border-radius:13px;
+    padding:16px;
+    font-family:monospace;
+    color:#7ee7ff;
+}
+
+/* SHARING */
+.share-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.share-step{
+    padding:22px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+}
+
+.share-step span{
+    color:var(--cyan);
+    font-weight:700;
+}
+
+.share-step p{
+    color:var(--muted);
+    line-height:1.7;
+    margin-top:8px;
+}
+
+/* MEDIA */
+.media-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.media-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:22px;
+}
+
+.media-card h3{
+    margin-bottom:7px;
+}
+
+.media-card > p{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+input[type=file]{
+    width:100%;
+    padding:13px;
+    border:1px dashed rgba(255,255,255,.2);
+    border-radius:12px;
+    background:rgba(255,255,255,.04);
+    color:#aeb8cc;
+    cursor:pointer;
+}
+
+.status{
+    margin-top:10px;
+    color:#7ee7ff;
+    font-size:12px;
+}
+
+.video-box{
+    margin-top:15px;
+    aspect-ratio:16/9;
+    background:#02050b;
+    border-radius:15px;
+    overflow:hidden;
+    border:1px solid var(--border);
+}
+
+.video-box video{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* PPT */
+.ppt-viewer{
+    margin-top:20px;
+    background:#02050b;
+    border:1px solid var(--border);
+    border-radius:18px;
+    min-height:420px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+}
+
+.ppt-viewer img{
+    max-width:100%;
+    max-height:420px;
+    object-fit:contain;
+}
+
+.empty{
+    text-align:center;
+    color:#6f7b91;
+    padding:30px;
+}
+
+.empty-icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    margin-top:15px;
+}
+
+.controls button{
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.06);
+    color:white;
+    padding:9px 15px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.controls button:hover{
+    background:rgba(255,255,255,.12);
+}
+
+/* PROFILE */
+.profile{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:30px;
+    align-items:center;
+    background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+    border:1px solid var(--border);
+    border-radius:28px;
+    padding:30px;
+}
+
+.profile-photo{
+    width:200px;
+    height:240px;
+    margin:auto;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.05);
+}
+
+.profile-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.profile h2{
+    font-family:'Space Grotesk';
+    font-size:32px;
+    margin-bottom:5px;
+}
+
+.profile .role{
+    color:var(--cyan);
+    margin-bottom:20px;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.info div{
+    padding:13px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:12px;
+    font-size:13px;
+    color:#aeb8ca;
+}
+
+.info strong{
+    display:block;
+    color:white;
+    margin-top:4px;
+}
+
+/* FOOTER */
+footer{
+    padding:35px 0;
+    text-align:center;
+    color:#758096;
+    border-top:1px solid rgba(255,255,255,.06);
+    font-size:12px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .hero-grid,
+    .connection,
+    .share-box{
+        grid-template-columns:1fr;
+    }
+
+    .grid-4{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .color-grid,
+    .media-grid{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .network-card{
+        min-height:330px;
+    }
+}
+
+@media(max-width:600px){
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero h1{
+        font-size:42px;
+        letter-spacing:-2px;
+    }
+
+    section{
+        padding:65px 0;
+    }
+
+    .grid-4,
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .profile{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .info{
+        grid-template-columns:1fr;
+        text-align:left;
+    }
+
+    .network{
+        transform:scale(.8);
+    }
+
+    .cable{
+        width:60px;
+    }
+
+    .cable::after{
+        animation:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="#" class="logo">
+            <div class="logo-icon">⌁</div>
+            <span>NET<span style="color:#00e5ff">LAB</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#materi">Materi</a>
+            <a href="#warna">Warna</a>
+            <a href="#langkah">Perakitan</a>
+            <a href="#koneksi">Koneksi</a>
+            <a href="#sharing">Sharing</a>
+            <a href="#media">Media</a>
+            <a href="#profil">Profil</a>
+        </div>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+    <div class="container hero-grid">
+
+        <div>
+            <div class="badge">
+                <span class="dot"></span>
+                JARINGAN KOMPUTER • PRAKTIKUM
+            </div>
+
+            <h1>
+                Merangkai Kabel LAN
+                <span class="gradient">& Menghubungkan 2 Laptop.</span>
+            </h1>
+
+            <p>
+                Website pembelajaran mengenai pembuatan kabel LAN menggunakan
+                RJ45, kabel UTP, tang crimping dan LAN tester, dilanjutkan
+                dengan koneksi peer-to-peer serta sharing file antar laptop.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#materi" class="btn btn-primary">
+                    Mulai Belajar →
+                </a>
+
+                <a href="#media" class="btn btn-secondary">
+                    📁 Media Pembelajaran
+                </a>
+            </div>
+        </div>
+
+
+        <div class="network-card">
+
+            <div class="network-title">
+                PEER TO PEER CONNECTION
+            </div>
+
+            <div class="network">
+
+                <div class="laptop">
+                    <div class="screen">💻</div>
+                    <div class="base"></div>
+                    <small>Laptop 1</small>
+                </div>
+
+                <div class="cable"></div>
+
+                <div class="laptop">
+                    <div class="screen">💻</div>
+                    <div class="base"></div>
+                    <small>Laptop 2</small>
+                </div>
+
+            </div>
+
+            <div style="text-align:center;color:#77839a;font-size:12px;">
+                Kabel LAN Crossover
+            </div>
+
+        </div>
+
+    </div>
+</header>
+
+
+<!-- MATERI -->
+<section id="materi">
+<div class="container">
+
+    <div class="section-head">
+        <div class="kicker">01 — Materi</div>
+        <h2>Alat & Bahan</h2>
+        <p>
+            Beberapa alat utama yang diperlukan untuk membuat kabel LAN
+            dan melakukan koneksi antar dua komputer.
+        </p>
+    </div>
+
+    <div class="grid-4">
+
+        <div class="card">
+            <div class="tool-icon">🧵</div>
+            <h3>Kabel UTP</h3>
+            <p>
+                Kabel jaringan yang digunakan sebagai media penghantar
+                data antar perangkat.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="tool-icon">🔌</div>
+            <h3>RJ45</h3>
+            <p>
+                Konektor yang dipasang pada ujung kabel UTP agar dapat
+                terhubung ke port Ethernet.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="tool-icon">✂️</div>
+            <h3>Tang Crimping</h3>
+            <p>
+                Digunakan untuk memasukkan dan mengunci kabel UTP
+                ke dalam konektor RJ45.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="tool-icon">🧪</div>
+            <h3>LAN Tester</h3>
+            <p>
+                Digunakan untuk memeriksa apakah susunan kabel LAN
+                sudah terhubung dengan benar.
+            </p>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- WARNA -->
+<section id="warna">
+<div class="container">
+
+    <div class="section-head">
+        <div class="kicker">02 — Wiring</div>
+        <h2>Urutan Warna Kabel</h2>
+        <p>
+            Gunakan standar warna yang benar agar kabel dapat bekerja
+            dengan baik.
+        </p>
+    </div>
+
+    <div class="color-grid">
+
+        <div class="color-card">
+
+            <div class="color-head">
+                <strong>T568A</strong>
+                <span style="color:#7b879d;">Straight</span>
+            </div>
+
+            <div class="color-list">
+
+                <div class="color-item">
+                    <span class="color-box" style="background:linear-gradient(white 50%,#52a447 50%);"></span>
+                    Putih Hijau
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:#52a447;"></span>
+                    Hijau
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:linear-gradient(white 50%,#f28c28 50%);"></span>
+                    Putih Orange
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:#4d8bc7;"></span>
+                    Biru
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:linear-gradient(white 50%,#4d8bc7 50%);"></span>
+                    Putih Biru
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:#f28c28;"></span>
+                    Orange
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:linear-gradient(white 50%,#9a663b 50%);"></span>
+                    Putih Coklat
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:#9a663b;"></span>
+                    Coklat
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="color-card">
+
+            <div class="color-head">
+                <strong>T568B</strong>
+                <span style="color:#7b879d;">Crossover</span>
+            </div>
+
+            <div class="color-list">
+
+                <div class="color-item">
+                    <span class="color-box" style="background:linear-gradient(white 50%,#f28c28 50%);"></span>
+                    Putih Orange
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:#f28c28;"></span>
+                    Orange
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:linear-gradient(white 50%,#52a447 50%);"></span>
+                    Putih Hijau
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:#4d8bc7;"></span>
+                    Biru
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:linear-gradient(white 50%,#4d8bc7 50%);"></span>
+                    Putih Biru
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:#52a447;"></span>
+                    Hijau
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:linear-gradient(white 50%,#9a663b 50%);"></span>
+                    Putih Coklat
+                </div>
+
+                <div class="color-item">
+                    <span class="color-box" style="background:#9a663b;"></span>
+                    Coklat
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- LANGKAH -->
+<section id="langkah">
+<div class="container">
+
+    <div class="section-head">
+        <div class="kicker">03 — Praktik</div>
+        <h2>Langkah Merangkai Kabel LAN</h2>
+        <p>
+            Ikuti langkah berikut secara berurutan agar konektor RJ45
+            terpasang dengan benar.
+        </p>
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">01</div>
+            <h3>Kupas Kabel</h3>
+            <p>
+                Kupas bagian luar kabel UTP menggunakan stripper
+                atau alat pengupas kabel.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">02</div>
+            <h3>Pisahkan Kabel</h3>
+            <p>
+                Pisahkan pasangan kabel kecil yang berada di dalam
+                kabel UTP.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">03</div>
+            <h3>Susun Warna</h3>
+            <p>
+                Susun kabel berdasarkan standar warna yang digunakan,
+                misalnya T568A dan T568B.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">04</div>
+            <h3>Luruskan Kabel</h3>
+            <p>
+                Luruskan semua kabel agar mudah dimasukkan ke konektor
+                RJ45.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">05</div>
+            <h3>Potong Rata</h3>
+            <p>
+                Potong ujung kabel menggunakan tang crimping agar
+                panjang kabel sama.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">06</div>
+            <h3>Masukkan RJ45</h3>
+            <p>
+                Masukkan kedelapan kabel ke dalam RJ45 sesuai urutan
+                warna.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">07</div>
+            <h3>Crimping</h3>
+            <p>
+                Tekan konektor RJ45 menggunakan tang crimping sampai
+                terkunci dengan kuat.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">08</div>
+            <h3>Uji LAN Tester</h3>
+            <p>
+                Hubungkan kabel ke LAN tester dan periksa indikator
+                pin 1 sampai 8.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">09</div>
+            <h3>Kabel Siap</h3>
+            <p>
+                Jika hasil tester benar, kabel LAN siap digunakan
+                untuk koneksi antar perangkat.
+            </p>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- KONEKSI -->
+<section id="koneksi">
+<div class="container">
+
+    <div class="section-head">
+        <div class="kicker">04 — Network</div>
+        <h2>Hubungkan 2 Laptop</h2>
+        <p>
+            Hubungkan kedua laptop menggunakan kabel LAN crossover,
+            kemudian atur alamat IP secara manual.
+        </p>
+    </div>
+
+    <div class="connection">
+
+        <div class="ip-card">
+
+            <h3>💻 Laptop 1</h3>
+
+            <div class="ip">
+                <span>IP Address</span>
+                <strong>10.10.10.1</strong>
+            </div>
+
+            <div class="ip">
+                <span>Subnet Mask</span>
+                <strong>255.0.0.0</strong>
+            </div>
+
+            <div class="ip">
+                <span>Gateway</span>
+                <strong>Kosong</strong>
+            </div>
+
+        </div>
+
+        <div class="ip-card">
+
+            <h3>💻 Laptop 2</h3>
+
+            <div class="ip">
+                <span>IP Address</span>
+                <strong>10.10.10.2</strong>
+            </div>
+
+            <div class="ip">
+                <span>Subnet Mask</span>
+                <strong>255.0.0.0</strong>
+            </div>
+
+            <div class="ip">
+                <span>Gateway</span>
+                <strong>Kosong</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div style="margin-top:25px;" class="card">
+
+        <h3 style="margin-bottom:15px;">
+            ⚙️ Cara Setting IP
+        </h3>
+
+        <p style="color:#aab4ca;line-height:1.8;font-size:14px;">
+            Control Panel → Network and Internet →
+            Network and Sharing Center → Change adapter settings →
+            Ethernet → Properties → Internet Protocol Version 4 (TCP/IPv4).
+        </p>
+
+        <div class="command">
+            Win + R → cmd → ping 10.10.10.2
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- SHARING -->
+<section id="sharing">
+<div class="container">
+
+    <div class="section-head">
+        <div class="kicker">05 — File Sharing</div>
+        <h2>Sharing File Antar Laptop</h2>
+        <p>
+            Setelah kedua laptop terhubung, file dapat dibagikan melalui
+            jaringan LAN.
+        </p>
+    </div>
+
+    <div class="share-box">
+
+        <div class="share-step">
+            <span>STEP 01</span>
+            <h3 style="margin-top:8px;">Pilih Folder</h3>
+            <p>
+                Klik kanan folder yang ingin dibagikan,
+                kemudian pilih <b>Properties</b>.
+            </p>
+        </div>
+
+        <div class="share-step">
+            <span>STEP 02</span>
+            <h3 style="margin-top:8px;">Advanced Sharing</h3>
+            <p>
+                Pilih menu <b>Sharing → Advanced Sharing</b>,
+                lalu centang <b>Share this folder</b>.
+            </p>
+        </div>
+
+        <div class="share-step">
+            <span>STEP 03</span>
+            <h3 style="margin-top:8px;">Aktifkan Sharing</h3>
+            <p>
+                Aktifkan Network Discovery dan File Sharing
+                pada pengaturan jaringan Windows.
+            </p>
+        </div>
+
+        <div class="share-step">
+            <span>STEP 04</span>
+            <h3 style="margin-top:8px;">Akses Dari Laptop 2</h3>
+            <p>
+                Tekan <b>Windows + R</b>, lalu masukkan alamat:
+            </p>
+
+            <div class="command">
+                \\10.10.10.1
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- MEDIA -->
+<section id="media">
+<div class="container">
+
+    <div class="section-head">
+        <div class="kicker">06 — Media</div>
+        <h2>Media Pembelajaran</h2>
+        <p>
+            Masukkan file PPT, gambar slide PPT, dan video pembelajaran
+            langsung dari komputer.
+        </p>
+    </div>
+
+
+    <div class="media-grid">
+
+        <!-- PPT -->
+        <div class="media-card">
+
+            <h3>📑 File PPT</h3>
+
+            <p>
+                Pilih file PPT atau PDF dari komputer.
+            </p>
+
+            <input
+                type="file"
+                id="pptFile"
+                accept=".ppt,.pptx,.pdf"
+            >
+
+            <div class="status" id="pptStatus">
+                Belum ada file yang dipilih.
+            </div>
+
+            <div style="margin-top:20px;">
+                <h3 style="font-size:15px;">
+                    🖼️ Preview Slide PPT
+                </h3>
+
+                <p style="margin-top:5px;">
+                    Export slide PPT menjadi gambar JPG/PNG,
+                    lalu masukkan semua gambarnya di sini.
+                </p>
+
+                <input
+                    type="file"
+                    id="slideInput"
+                    accept="image/*"
+                    multiple
+                >
+
+                <div class="status" id="slideStatus">
+                    Belum ada slide.
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- VIDEO -->
+        <div class="media-card">
+
+            <h3>🎥 Video Pembelajaran</h3>
+
+            <p>
+                Masukkan dua video praktik LAN.
+            </p>
+
+            <label style="font-size:13px;color:#cbd5e1;">
+                FILE 1
+            </label>
+
+            <input
+                type="file"
+                id="video1"
+                accept="video/*"
+                style="margin-top:8px;"
+            >
+
+            <div class="video-box">
+                <video id="player1" controls>
+                    Browser tidak mendukung video.
+                </video>
+            </div>
+
+        </div>
+
+
+        <div class="media-card">
+
+            <h3>🎬 Video 2</h3>
+
+            <p>
+                Video kedua dapat digunakan untuk dokumentasi
+                koneksi atau sharing file.
+            </p>
+
+            <input
+                type="file"
+                id="video2"
+                accept="video/*"
+            >
+
+            <div class="video-box">
+                <video id="player2" controls>
+                    Browser tidak mendukung video.
+                </video>
+            </div>
+
+        </div>
+
+
+        <!-- SLIDESHOW -->
+        <div class="media-card">
+
+            <h3>📽️ Slide Presentation</h3>
+
+            <p>
+                Gunakan tombol untuk melihat slide PPT.
+            </p>
+
+            <div class="ppt-viewer" id="pptViewer">
+
+                <div class="empty">
+                    <div class="empty-icon">📑</div>
+                    <div>Belum ada slide PPT</div>
+                </div>
+
+            </div>
+
+            <div class="controls">
+
+                <button onclick="prevSlide()">
+                    ← Prev
+                </button>
+
+                <span id="slideNumber">
+                    0 / 0
+                </span>
+
+                <button onclick="nextSlide()">
+                    Next →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- PROFIL -->
+<section id="profil">
+<div class="container">
+
+    <div class="section-head">
+        <div class="kicker">07 — Profile</div>
+        <h2>Profil Mahasiswa</h2>
+    </div>
+
+    <div class="profile">
+
+        <div class="profile-photo">
+
+            <!--
+            GANTI FOTO:
+            Buat folder "image"
+            lalu masukkan foto dengan nama "foto.jpg"
+            -->
+
+            <img
+                src="image/foto.jpg"
+                alt="Foto Mahasiswa"
+                onerror="this.style.display='none';"
+            >
+
+        </div>
+
+
+        <div>
+
+            <h2>M RAFAN AFDAL</h2>
+
+            <div class="role">
+                Mahasiswa • Teknik Komputer
+            </div>
+
+            <div class="info">
+
+                <div>
+                    Nama
+                    <strong>M RAFAN AFDAL</strong>
+                </div>
+
+                <div>
+                    Kelas
+                    <strong>1-TIA</strong>
+                </div>
+
+                <div>
+                    NIM
+                    <strong>062640723204</strong>
+                </div>
+
+                <div>
+                    Jurusan
+                    <strong>Teknik Komputer</strong>
+                </div>
+
+                <div>
+                    Program Studi
+                    <strong>D4 Teknologi Informatika Multimedia Digital</strong>
+                </div>
+
+                <div>
+                    Mata Kuliah
+                    <strong>Jaringan Komputer</strong>
+                </div>
+
+                <div style="grid-column:1/-1;">
+                    Dosen Pengampu
+                    <strong>
+                        Dr. Ali Firdaus. S.Kom., M.Kom
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<footer>
+    © 2026 M RAFAN AFDAL • Jaringan Komputer • 1-TIA
+</footer>
+
+
+<script>
+
+/* =========================
+   PPT FILE
+========================= */
+
+const pptFile = document.getElementById("pptFile");
+const pptStatus = document.getElementById("pptStatus");
+
+pptFile.addEventListener("change", function(){
+
+    if(this.files.length > 0){
+
+        pptStatus.textContent =
+            "File terpilih: " + this.files[0].name;
+
+    }else{
+
+        pptStatus.textContent =
+            "Belum ada file yang dipilih.";
+
+    }
+
+});
+
+
+/* =========================
+   SLIDESHOW
+========================= */
+
+const slideInput = document.getElementById("slideInput");
+const slideStatus = document.getElementById("slideStatus");
+const pptViewer = document.getElementById("pptViewer");
+const slideNumber = document.getElementById("slideNumber");
+
+let slides = [];
+let currentSlide = 0;
+
+
+slideInput.addEventListener("change", function(){
+
+    slides = Array.from(this.files);
+
+    slides.sort((a,b) =>
+        a.name.localeCompare(
+            b.name,
+            undefined,
+            {numeric:true}
+        )
+    );
+
+    currentSlide = 0;
+
+    slideStatus.textContent =
+        slides.length + " slide berhasil dimuat.";
+
+    showSlide();
+
+});
+
+
+function showSlide(){
+
+    if(slides.length === 0){
+
+        pptViewer.innerHTML = `
+            <div class="empty">
+                <div class="empty-icon">📑</div>
+                <div>Belum ada slide PPT</div>
+            </div>
+        `;
+
+        slideNumber.textContent = "0 / 0";
+
+        return;
+    }
+
+    const url =
+        URL.createObjectURL(slides[currentSlide]);
+
+    pptViewer.innerHTML = `
+        <img src="${url}" alt="Slide PPT">
+    `;
+
+    slideNumber.textContent =
+        `${currentSlide + 1} / ${slides.length}`;
+}
+
+
+function nextSlide(){
+
+    if(slides.length === 0) return;
+
+    currentSlide++;
+
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
+
+    showSlide();
+}
+
+
+function prevSlide(){
+
+    if(slides.length === 0) return;
+
+    currentSlide--;
+
+    if(currentSlide < 0){
+        currentSlide = slides.length - 1;
+    }
+
+    showSlide();
+}
+
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "ArrowRight"){
+        nextSlide();
+    }
+
+    if(e.key === "ArrowLeft"){
+        prevSlide();
+    }
+
+});
+
+
+/* =========================
+   VIDEO 1
+========================= */
+
+const video1 = document.getElementById("video1");
+const player1 = document.getElementById("player1");
+
+video1.addEventListener("change",function(){
+
+    if(this.files.length > 0){
+
+        player1.src =
+            URL.createObjectURL(this.files[0]);
+
+        player1.load();
+
+    }
+
+});
+
+
+/* =========================
+   VIDEO 2
+========================= */
+
+const video2 = document.getElementById("video2");
+const player2 = document.getElementById("player2");
+
+video2.addEventListener("change",function(){
+
+    if(this.files.length > 0){
+
+        player2.src =
+            URL.createObjectURL(this.files[0]);
+
+        player2.load();
+
+    }
+
+});
+
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+const observer =
+new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+
+            }
+
+        });
+
+    },
+    {threshold:.08}
+);
+
+
+document.querySelectorAll(
+    ".card,.step,.media-card,.profile,.color-card,.ip-card,.share-step"
+).forEach(el => {
+
+    el.style.opacity = "0";
+    el.style.transform = "translateY(20px)";
+    el.style.transition =
+        "opacity .7s ease, transform .7s ease";
+
+    observer.observe(el);
+
+});
+
+</script>
+
+</body>
+</html>
